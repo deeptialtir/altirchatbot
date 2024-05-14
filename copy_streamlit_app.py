@@ -5,13 +5,6 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from hugchat import hugchat
 from hugchat.login import Login
 
-from langchain_community.llms import LlamaCpp
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-
-# Load the LlamaCpp language model, adjust GPU usage based on your hardware
-llm = LlamaCpp(model_path="models/llama-2-7b-chat.Q5_K_M.gguf", n_gpu_layers=1, n_batch=4, verbose=False)
-
 st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
 
 # Log in to huggingface and grant authorization to huggingchat
@@ -53,7 +46,6 @@ response_container = st.container()
 ## Function for taking user provided prompt as input
 def get_text():
     input_text = st.text_input("You: ", "", key="input")
-    print("Input text is %s" %(input_text))
     return input_text
 ## Applying the user input box
 with input_container:
